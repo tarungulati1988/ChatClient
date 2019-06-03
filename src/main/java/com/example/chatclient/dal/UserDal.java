@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDal extends CrudRepository<User, Long> {
   User findByUsername(@Param("username") String username);
+
+  boolean existsByUsername(@Param("username") String username);
 }

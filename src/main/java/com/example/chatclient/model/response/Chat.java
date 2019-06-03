@@ -1,5 +1,7 @@
 package com.example.chatclient.model.response;
 
+import static com.example.chatclient.constant.DataContstants.PST;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -15,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class Chat {
+public class Chat extends ErrorResponse {
   /**
    * chat id to distinguish between multiple chats.
    */
@@ -38,6 +40,6 @@ public class Chat {
    * expiration date in ISO format for when a chat expires.
    */
   @JsonProperty("expiration_date")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, timezone = PST)
   private Date expiration_date;
-
 }

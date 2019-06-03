@@ -15,14 +15,14 @@ public abstract class BaseRequestModel implements Serializable {
    * userId/username for the sender for the incoming request to map to a particular user.
    */
   @JsonProperty("username")
-  @NotNull(groups = {Create.class, Read.class})
+  @NotNull(groups = {Create.class, Read.class}, message = "username must not be null")
   private String username;
 
   /**
    * userId/username for the sender for the incoming request to map to a particular user.
    */
   @JsonProperty("sender")
-  @NotNull(groups = {Create.class, Read.class})
+  @NotNull(groups = {Create.class, Read.class}, message = "sender must not be null")
   private String sender;
 
   public interface Create {

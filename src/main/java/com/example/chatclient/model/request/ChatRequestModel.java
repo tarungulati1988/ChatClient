@@ -1,6 +1,8 @@
 package com.example.chatclient.model.request;
 
+import static com.example.chatclient.constant.DataContstants.PST;
 import com.example.chatclient.validators.InFuture;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
@@ -26,5 +28,6 @@ public class ChatRequestModel extends BaseRequestModel {
    */
   @JsonProperty("expirationDate")
   @InFuture(groups = {Create.class})
+  @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = PST)
   private Date expirationDate;
 }

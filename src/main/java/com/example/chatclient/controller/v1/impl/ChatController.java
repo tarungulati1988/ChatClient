@@ -3,7 +3,7 @@ package com.example.chatclient.controller.v1.impl;
 import com.example.chatclient.controller.v1.IChatController;
 import com.example.chatclient.model.request.ChatRequestModel;
 import com.example.chatclient.model.response.Chat;
-import com.example.chatclient.service.IChatService;
+import com.example.chatclient.service.v1.IChatService;
 import java.util.List;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -28,7 +28,6 @@ public class ChatController implements IChatController {
   @GetMapping(value = "/{id}/id", produces = "application/json", consumes = "application/json")
   public ResponseEntity<Chat>
   getChatById(@PathVariable @NotNull @Min(value = 0, message = "Value should between 0 and 10") Long id) {
-    System.out.println("getChatById");
     return ResponseEntity
         .ok()
         .body(chatService.getChatById(id));
@@ -65,7 +64,6 @@ public class ChatController implements IChatController {
 //  public ResponseEntity<List<Chat>>
 //  getChatByUserName(@Validated(BaseRequestModel.Read.class)
 //                    @ModelAttribute ChatRequestModel chatRequestModel) {
-    System.out.println("getChatByUserName");
     return ResponseEntity
         .ok()
         .body(chatService.getChatByUsername(username));
@@ -101,7 +99,6 @@ public class ChatController implements IChatController {
   public ResponseEntity<Chat>
   postChat(@Validated(ChatRequestModel.Create.class)
            @RequestBody ChatRequestModel chatRequestModel) {
-    System.out.println("postChat");
     return ResponseEntity
         .status(201)
         .body(chatService.createChat(chatRequestModel));

@@ -8,7 +8,6 @@ com/example/chatclient/entity/AssignedSequenceGenerator.class
 com/example/chatclient/model/request/BaseRequestModel.class
 com/example/chatclient/model/request/BaseRequestModel$Create.class
 com/example/chatclient/entity/User.class
-com/example/chatclient/service/IChatService.class
 com/example/chatclient/entity/Message.class
 com/example/chatclient/exception/type/ApplicationException.class
 com/example/chatclient/model/response/Chat.class
@@ -16,11 +15,11 @@ com/example/chatclient/validators/InFuture.class
 com/example/chatclient/dal/MessageDal.class
 com/example/chatclient/dal/UserDal.class
 com/example/chatclient/exception/handler/ChatExceptionHandler.class
-com/example/chatclient/service/impl/ChatService.class
 com/example/chatclient/model/request/BaseRequestModel$Read.class
+com/example/chatclient/service/v1/impl/ChatService.class
 com/example/chatclient/init/DataInit.class
+com/example/chatclient/service/v1/IChatService.class
 com/example/chatclient/controller/v1/impl/ChatController.class
 com/example/chatclient/controller/v1/IChatController.class
 com/example/chatclient/model/response/ErrorResponse.class
-com/example/chatclient/model/response/ErrorResponse$ErrorResponseBuilder.class
 com/example/chatclient/model/response/Chat$ChatBuilder.class

@@ -1,4 +1,4 @@
-package com.example.chatclient.service;
+package com.example.chatclient.service.v1;
 
 import com.example.chatclient.model.request.ChatRequestModel;
 import com.example.chatclient.model.response.Chat;

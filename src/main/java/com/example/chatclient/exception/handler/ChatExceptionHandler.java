@@ -29,12 +29,11 @@ public class ChatExceptionHandler extends ResponseEntityExceptionHandler {
   handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex,
                                       HttpHeaders headers, HttpStatus status, WebRequest request) {
     List<String> validationList = Lists.newArrayList(ex.getLocalizedMessage());
+    ErrorResponse errorResponse = new ErrorResponse();
+    errorResponse.setMessage(validationList);
     return ResponseEntity
         .badRequest()
-        .body(ErrorResponse
-            .builder()
-            .message(validationList)
-            .build());
+        .body(errorResponse);
   }
 
   @Override
@@ -49,22 +48,20 @@ public class ChatExceptionHandler extends ResponseEntityExceptionHandler {
         .map(fieldError -> fieldError.getDefaultMessage())
         .collect(Collectors.toList());
     LOGGER.info("Validation error list : " + validationList);
+    ErrorResponse errorResponse = new ErrorResponse();
+    errorResponse.setMessage(validationList);
     return ResponseEntity
         .badRequest()
-        .body(ErrorResponse
-            .builder()
-            .message(validationList)
-            .build());
+        .body(errorResponse);
   }
 
   @ExceptionHandler(value = {ApplicationException.class})
   protected ResponseEntity<Object> handleApplicationException(ApplicationException ex,
                                                               WebRequest request) {
+    ErrorResponse errorResponse = new ErrorResponse();
+    errorResponse.setMessage(Lists.newArrayList(ex.getLocalizedMessage()));
     return ResponseEntity
         .badRequest()
-        .body(ErrorResponse
-            .builder()
-            .message(Lists.newArrayList(ex.getLocalizedMessage()))
-            .build());
+        .body(errorResponse);
   }
 }

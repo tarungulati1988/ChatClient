@@ -6,6 +6,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 public class InFutureValidator implements ConstraintValidator<InFuture, Date> {
+
   public final void initialize(final InFuture annotation) {
   }
 
@@ -13,7 +14,6 @@ public class InFutureValidator implements ConstraintValidator<InFuture, Date> {
     if (value.after(new Date())) {
       return true;
     } else {
-//      throw new RuntimeException("Expiration date is not in the future");
       throw new ApplicationException("Expiration date is not in the future.");
     }
   }
