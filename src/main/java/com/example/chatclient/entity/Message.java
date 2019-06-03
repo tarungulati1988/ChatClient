@@ -1,6 +1,5 @@
 package com.example.chatclient.entity;
 
-import com.example.chatclient.validators.InFuture;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Date;
 import javax.persistence.Column;
@@ -19,7 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name = "MESSAGE")
 @DynamicUpdate
-public class Message  implements Identifiable<Long> {
+public class Message implements Identifiable<Long> {
 
   @Id
   @GenericGenerator(

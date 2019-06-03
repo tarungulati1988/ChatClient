@@ -27,7 +27,7 @@ public class ChatController implements IChatController {
   @Override
   @GetMapping(value = "/{id}/id", produces = "application/json", consumes = "application/json")
   public ResponseEntity<Chat>
-  getChatById(@PathVariable @NotNull @Min(value=0,message="Value should between 0 and 10") Long id) {
+  getChatById(@PathVariable @NotNull @Min(value = 0, message = "Value should between 0 and 10") Long id) {
     System.out.println("getChatById");
     return ResponseEntity
         .ok()
@@ -37,8 +37,8 @@ public class ChatController implements IChatController {
   /**
    * Returns a list of all unexpired messages for a given username.
    * Additionally, any messages that are read and unexpired are subsequently expired.
-   *
-   *
+   * <p>
+   * <p>
    * Sample 200 response:
    * <pre>
    * [{
@@ -54,6 +54,7 @@ public class ChatController implements IChatController {
    *    "text": "I got no dime but I got some time"
    * }]
    * </pre>
+   *
    * @param chatRequestModel
    * @return
    */
@@ -72,28 +73,28 @@ public class ChatController implements IChatController {
 
   /**
    * Creates a new message.
-   *
+   * <p>
    * Sample 201 response:
    * <pre>
    *  {
    *    "id": 1234
    *  }
    * </pre>
-   * @param chatRequestModel
-   *   username Type: String,
-   *            Description: The recipient of the message,
-   *            Required: Yes,
-   *            Default Value: N/A
-   *   text     Type: String,
-   *            Description: The recipient of the message,
-   *            Required: Yes,
-   *            Default Value: N/A
-   *   timeout  Type: String,
-   *            Description: The recipient of the message,
-   *            Required: Yes,
-   *            Default Value: N/A
-   * @return    Response Entity containing a Chat object with id of newly created
-   *            message and a http status 201
+   *
+   * @param chatRequestModel username Type: String,
+   *                         Description: The recipient of the message,
+   *                         Required: Yes,
+   *                         Default Value: N/A
+   *                         text     Type: String,
+   *                         Description: The recipient of the message,
+   *                         Required: Yes,
+   *                         Default Value: N/A
+   *                         timeout  Type: String,
+   *                         Description: The recipient of the message,
+   *                         Required: Yes,
+   *                         Default Value: N/A
+   * @return Response Entity containing a Chat object with id of newly created
+   * message and a http status 201
    */
   @Override
   @PostMapping(produces = "application/json", consumes = "application/json")

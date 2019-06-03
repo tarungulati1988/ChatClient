@@ -1,14 +1,11 @@
 package com.example.chatclient.init;
 
 import static com.example.chatclient.constant.DataContstants.YYYY_MM_DD_T;
-
 import com.example.chatclient.dal.MessageDal;
 import com.example.chatclient.dal.UserDal;
-import com.example.chatclient.entity.Message;
 import com.example.chatclient.entity.User;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -17,13 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataInit implements ApplicationRunner {
 
+  private static final DateFormat DATE_FORMAT = new SimpleDateFormat(YYYY_MM_DD_T);
   @Autowired
   private UserDal userDal;
-
   @Autowired
   private MessageDal messageDal;
-
-  private static final DateFormat DATE_FORMAT = new SimpleDateFormat(YYYY_MM_DD_T);
 
 //  @Autowired
 //  public DataInit(UserDal userDal) {

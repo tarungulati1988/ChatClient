@@ -46,7 +46,7 @@ public class ChatExceptionHandler extends ResponseEntityExceptionHandler {
         .getBindingResult()
         .getFieldErrors()
         .stream()
-        .map(fieldError->fieldError.getDefaultMessage())
+        .map(fieldError -> fieldError.getDefaultMessage())
         .collect(Collectors.toList());
     LOGGER.info("Validation error list : " + validationList);
     return ResponseEntity
@@ -57,10 +57,10 @@ public class ChatExceptionHandler extends ResponseEntityExceptionHandler {
             .build());
   }
 
-  @ExceptionHandler(value = { ApplicationException.class})
+  @ExceptionHandler(value = {ApplicationException.class})
   protected ResponseEntity<Object> handleApplicationException(ApplicationException ex,
                                                               WebRequest request) {
-        return ResponseEntity
+    return ResponseEntity
         .badRequest()
         .body(ErrorResponse
             .builder()

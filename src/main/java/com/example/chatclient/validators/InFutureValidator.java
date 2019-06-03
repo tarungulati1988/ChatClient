@@ -6,7 +6,8 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 public class InFutureValidator implements ConstraintValidator<InFuture, Date> {
-  public final void initialize(final InFuture annotation) {}
+  public final void initialize(final InFuture annotation) {
+  }
 
   public final boolean isValid(final Date value, final ConstraintValidatorContext context) {
     if (value.after(new Date())) {
