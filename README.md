@@ -38,4 +38,9 @@ Postman collection can be imported in to postman to test the api using postman o
 6. To run the integration tests run ```mvn clean test```
 
 
+## Software Requirements
+1. Java 8 minimum
+2. Maven 3.3+
+
+
 
