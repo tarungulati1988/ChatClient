@@ -6,6 +6,14 @@ A simple spring boot based chat api for the following problem statement:
 ###  /api/v1/chats/{id}/id
 HTTP Method: GET
 Sample Request: http://localhost:9192/api/v1/chats/123/id
+Sample Response(200):
+~~~~
+{
+    "id": 1,
+    "text": "lorem ipsumjohnwick, 12345!..",
+    "expiration_date": "2019-06-02T21:59:31.000-0700"
+}
+~~~~
 ~~~~
 curl -X GET "http://localhost:9192/api/v1/chats/1/id" --header "Content-Type: application/json" --header "Accept: application/json"
 ~~~~
@@ -13,15 +21,43 @@ curl -X GET "http://localhost:9192/api/v1/chats/1/id" --header "Content-Type: ap
 ###  /api/v1/chats/{username}/username
 HTTP Method: GET
 Sample Request: http://localhost:9192/api/v1/chats/johnwick/username
+Sample Response(200):
+~~~~
+[
+    {
+        "id": 1,
+        "text": "lorem ipsumjohnwick, 12345!.."
+    },
+    {
+        "id": 2,
+        "text": "lorem ipsumjohnwick, 12345!.."
+    }
+]
+~~~~
 ~~~~
 curl -X GET "http://localhost:9192/api/v1/chats/johnwick/username" --header "Content-Type: application/json" --header "Accept: application/json"
 ~~~~
 
 ###  /api/v1/chats
 HTTP Method: POST
-Sample Request: http://localhost:9192/api/v1/chats
+Sample Request:
 ~~~~
-curl -X POST "http://localhost:9192/api/v1/chats" --header "Content-Type: application/json" --header "Accept: application/json" -d "{\"expirationDate\": \"2020-01-17T22:43:31.410Z\", \"username\": \"johnwick\",\"sender\": \"glackman\", \"text\": \"lorem ipsumjohnwick, 12345\"}"
+{
+	"timeout": 5000000,
+	"username": "johnwick",
+	"sender": "glackman",
+	"text": "lorem ipsumjohnwick, 12345!.."
+}
+~~~~
+Sample Response(201):
+~~~~
+{
+    "id": 2
+}
+~~~~
+Curl:
+~~~~
+curl -X POST "http://localhost:9192/api/v1/chats" --header "Content-Type: application/json" --header "Accept: application/json" -d "{\"timeout\": 50000000, \"username\": \"johnwick\",\"sender\": \"glackman\", \"text\": \"lorem ipsumjohnwick, 12345\"}"
 ~~~~
 
 ## Api postman collection
@@ -43,4 +79,14 @@ Postman collection can be imported in to postman to test the api using postman o
 2. Maven 3.3+
 
 
+## DB access
+The data base can be accessed using the below mentioned url
+~~~
+[H2 console](http://localhost:9192/api/h2-console/)
+~~~
+Using the above console more users can be added into the application database.
+
+## Important api's for application health
+1. [Metrics](http://localhost:9192/api/actuator/metrics)
+2. [Health](http://localhost:9192/api/actuator/health)
 

@@ -9,6 +9,7 @@ import com.example.chatclient.model.request.ChatRequestModel;
 import com.example.chatclient.model.response.Chat;
 import com.example.chatclient.service.v1.IChatService;
 import com.google.common.collect.Lists;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +49,8 @@ public class ChatService implements IChatService {
    */
   @Override
   public List<Chat> getChatByUsername(String username) {
-    List<Message> messages = messageDal.findByReceiverAndAndExpirationDateAfter(username, new Date());
+    List<Message> messages = messageDal
+        .findByReceiverAndAndExpirationDateAfter(username, new Date());
     if (!CollectionUtils.isEmpty(messages)) {
       List<Message> updatedMessages = Lists.newArrayList();
       List<Chat> chats = Lists.newArrayList();
@@ -87,16 +89,31 @@ public class ChatService implements IChatService {
     if (user == null || !userDal.existsByUsername(req.getUsername())) {
       throw new ApplicationException("User doesn't exist in the system.");
     }
-
+    // build out the message dal object
     Message message = new Message();
     message.receiver = req.getUsername();
     message.user = user;
     message.text = req.getText();
-    message.expirationDate = req.getExpirationDate();
+    message.expirationDate = buildExpirationDate(req.getTimeout());
+    // save the message
     Message savedMessage = messageDal.save(message);
+
+    // return a chat response object containing the newly created message id
     return Chat
         .builder()
         .id(savedMessage.id)
         .build();
+  }
+
+  /**
+   * Given a timeout in seconds generate the expiration date using the current date.
+   * @param timeout - timeout in seconds.
+   * @return Expiration date to be saved in the database
+   */
+  private Date buildExpirationDate(Integer timeout) {
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(new Date());
+    cal.add(Calendar.SECOND, timeout);
+    return cal.getTime();
   }
 }

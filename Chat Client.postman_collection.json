@@ -1,80 +1,80 @@
 {
-  "variables": [],
-  "info": {
-    "name": "Chat Client",
-    "_postman_id": "6bbcf7db-e81a-c536-599a-4f646f37a9e0",
-    "description": "Api's for a simple chat client",
-    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "GET:: chats by ID",
-      "request": {
-        "url": "http://localhost:9192/api/v1/chats/1/id",
-        "method": "GET",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "description": ""
-          },
-          {
-            "key": "Accept",
-            "value": "application/json",
-            "description": ""
-          }
-        ],
-        "body": {},
-        "description": "given a chat id, fetch the chat message for it if one exists"
-      },
-      "response": []
-    },
-    {
-      "name": "GET:: chats by USERNAME",
-      "request": {
-        "url": "http://localhost:9192/api/v1/chats/johnwick/username",
-        "method": "GET",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "description": ""
-          },
-          {
-            "key": "Accept",
-            "value": "application/json",
-            "description": ""
-          }
-        ],
-        "body": {},
-        "description": "given a chat id, fetch the chat message for it if one exists"
-      },
-      "response": []
-    },
-    {
-      "name": "POST:: create CHAT",
-      "request": {
-        "url": "http://localhost:9192/api/v1/chats",
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "description": ""
-          },
-          {
-            "key": "Accept",
-            "value": "application/json",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n\t\"expirationDate\": \"2020-01-17T22:43:31.410Z\",\n\t\"username\": \"johnwick\",\n\t\"sender\": \"glackman\",\n\t\"text\": \"lorem ipsumjohnwick, 12345!..\"\n}"
-        },
-        "description": "given a chat id, fetch the chat message for it if one exists"
-      },
-      "response": []
-    }
-  ]
+	"variables": [],
+	"info": {
+		"name": "Chat Client",
+		"_postman_id": "6bbcf7db-e81a-c536-599a-4f646f37a9e0",
+		"description": "Api's for a simple chat client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET:: chats by ID",
+			"request": {
+				"url": "http://localhost:9192/api/v1/chats/1/id",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "given a chat id, fetch the chat message for it if one exists"
+			},
+			"response": []
+		},
+		{
+			"name": "GET:: chats by USERNAME",
+			"request": {
+				"url": "http://localhost:9192/api/v1/chats/johnwick/username",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "given a chat id, fetch the chat message for it if one exists"
+			},
+			"response": []
+		},
+		{
+			"name": "POST:: create CHAT",
+			"request": {
+				"url": "http://localhost:9192/api/v1/chats",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"timeout\": 5000000,\n\t\"username\": \"johnwick\",\n\t\"sender\": \"glackman\",\n\t\"text\": \"lorem ipsumjohnwick, 12345!..\"\n}"
+				},
+				"description": "given a chat id, fetch the chat message for it if one exists"
+			},
+			"response": []
+		}
+	]
 }
